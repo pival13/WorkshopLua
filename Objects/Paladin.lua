@@ -14,4 +14,15 @@ local inheritRules = function (object, key)
 end
 setmetatable(Paladin, {__index = inheritRules})
 
+function Paladin.new (o, name, level, weapon)
+    local p = o or {
+        name = name,
+        level = level,
+        weapon = weapon
+    }
+    setmetatable(p, {__index=Paladin})
+    print("The light fall on " .. p.name)
+    return p
+end
+
 return Paladin
